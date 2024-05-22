@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 
+final loginText = TextEditingController();
+final passText = TextEditingController();
+final conpassText = TextEditingController();
+bool loginDisabled = true;
 
-class Regi extends StatelessWidget {
+class Regi extends StatefulWidget {
   const Regi({super.key});
+
+  @override
+  State <Regi> createState() => _RegiState();
+}
+
+class _RegiState extends State<Regi> {
 
   @override
   Widget build(BuildContext context) {
@@ -14,42 +24,50 @@ class Regi extends StatelessWidget {
         child: Center(
               child: Column(
               children: [
-                  const TextField(
-                    decoration: InputDecoration(
+                TextField(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Enter your E-mail',
-                      ),
-                    ),
-                const TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Create your Login',
+                      hintText: 'Create Login',
                      ),
-                    ),
-                const TextField(
-                    decoration: InputDecoration(
+                    controller: loginText),
+                TextField(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Create a Password',
+                      hintText: 'Create Password',
                      ),
-                    ),
-                  const TextField(
-                    decoration: InputDecoration(
+                    controller: passText),
+                  TextField(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Confirm the Password',
+                      hintText: 'Confirm Password',
                       ),
-                    ),
+                    controller: conpassText),
                 Container(height: 10,),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    showDialog(
+              context: context,
+              builder: (context) {
+                if (passText.text == conpassText.text) {
+                  loginDisabled = false; 
+                  return const AlertDialog(
+                content: Text('Registration complete.'),
+              );
+                }
+                else {
+                  return const AlertDialog(
+                content: Text('Passwords do NOT match!'),
+              );
+                }
+            },
+          );
                   },
                   child: const Text('Register Account'),
                 ),
                 Container(height: 30,),
                 TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                  onPressed: () {loginDisabled
+                  ? () => null : Navigator.pop(context); },
                   child: const Text('Log in here!'),
                 ),
                 ],

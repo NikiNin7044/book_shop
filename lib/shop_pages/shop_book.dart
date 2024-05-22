@@ -3,10 +3,6 @@ import 'package:book_shop/book_data/book_data.dart';
 import 'package:book_shop/shop_pages/shop_main.dart';
 import 'package:card_swiper/card_swiper.dart';
 
-final List<String> picsList = [
-        booksList[ind1].image, booksList[ind1].image2,
-      ];
-
 class BookPage extends StatelessWidget {
   const BookPage({super.key});
 

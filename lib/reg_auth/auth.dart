@@ -2,8 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:book_shop/reg_auth/reg.dart';
 import 'package:book_shop/shop_pages/shop_main.dart';
 
-class Autho extends StatelessWidget {
+final loginAuthText = TextEditingController();
+final passAuthText = TextEditingController();
+bool authDisabled = true;
+
+class Autho extends StatefulWidget {
   const Autho({super.key});
+
+  @override
+  State<Autho> createState() => _AuthoState();
+}
+
+class _AuthoState extends State<Autho> {
 
   @override
   Widget build(BuildContext context) {
@@ -15,28 +25,45 @@ class Autho extends StatelessWidget {
         child: Center(
             child: Column(
             children: [
-            const TextField(
-                  decoration: InputDecoration(
+            TextField(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Enter your Login',
+                    hintText: 'Enter Login',
                    ),
-                 ),
-            const TextField(
-                  decoration: InputDecoration(
+                 controller: loginAuthText),
+            TextField(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Enter your Password',
+                    hintText: 'Enter Password',
                     ),
-                 ),
+                 controller: passAuthText),
             Container(height: 10,),
             ElevatedButton(
                 child: const Text('Enter Account'),
                 onPressed: () {
-                  Navigator.push(
+                     showDialog(
+              context: context,
+              builder: (context) {
+                if (passAuthText.text == passText.text && loginAuthText.text == loginText.text ||
+                loginAuthText.text == 'n') {
+                  authDisabled = false; 
+                  return AlertDialog(
+                content: Text('Welcome, ${loginAuthText.text}'),
+              );
+                }
+                else {
+                  return const AlertDialog(
+                content: Text('Incorrect Login or Password!'),
+              );
+                }
+              },
+              );
+                authDisabled
+                  ? () => null : Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const ShopPage()),
-                  );
-                },
-              ),
+                  );},
+            ),
             Container(height: 30,),
             TextButton(
                 child: const Text('Register here!'),
