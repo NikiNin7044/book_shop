@@ -18,8 +18,14 @@ class _RegiState extends State<Regi> {
   Widget build(BuildContext context) {
     return Scaffold(resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: const Text('Registration'),
-      ),
+        title: const Center(child: Text('Registration.' ,
+        style: TextStyle(
+          color: Colors.white 
+          ),
+          ),
+          ),
+        backgroundColor: Colors.cyan,
+        ),
       body: SingleChildScrollView(
         child: Center(
               child: Column(
@@ -48,10 +54,16 @@ class _RegiState extends State<Regi> {
                     showDialog(
               context: context,
               builder: (context) {
-                if (passText.text == conpassText.text) {
+                if (passText.text == conpassText.text && loginText.text != '' 
+                && passText.text != '') {
                   loginDisabled = false; 
                   return const AlertDialog(
                 content: Text('Registration complete.'),
+              );
+                }
+                else if(loginText.text == '' || passText.text == '') {
+                  return const AlertDialog(
+                content: Text('Blank Login and/or Password!'),
               );
                 }
                 else {

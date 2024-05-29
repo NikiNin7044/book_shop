@@ -1,5 +1,0 @@
-https://github.com/thanhniencung/flutter-app-bookstore/tree/master/lib
-
-https://github.com/sangvaleap/app-flutter-book-store/tree/main
-
-https://pub.dev/packages/shopping_cart

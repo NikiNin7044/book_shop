@@ -19,8 +19,14 @@ class _AuthoState extends State<Autho> {
   Widget build(BuildContext context) {
     return Scaffold(resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Authorization'),
-      ),
+        title: const Center(child: Text('Authorization.' ,
+        style: TextStyle(
+          color: Colors.white 
+          ),
+          ),
+          ),
+        backgroundColor: Colors.cyan,
+        ),
       body: SingleChildScrollView(
         child: Center(
             child: Column(
