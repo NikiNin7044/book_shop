@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:book_shop/book_data/book_data.dart';
 import 'package:book_shop/shop_pages/shop_main.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:book_shop/shop_pages/favorite_page.dart';
 
 class BookPage extends StatefulWidget {
   const BookPage({super.key});
@@ -41,7 +42,11 @@ if (booksList[ind1].heart == true) {
           IconButton(
             icon: const Icon(color: Colors.red, Icons.favorite),
             tooltip: 'Favorites',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const FavPage()),);
+            },
     ),
         IconButton(
             icon: const Icon(Icons.settings),

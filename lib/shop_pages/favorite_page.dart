@@ -1,29 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:book_shop/book_data/book_data.dart';
 import 'package:book_shop/shop_pages/shop_book.dart';
-import 'package:book_shop/reg_auth/auth.dart';
-import 'package:book_shop/shop_pages/favorite_page.dart';
+import 'package:book_shop/shop_pages/shop_main.dart';
 
-var ind1 = 0;
-var iconcolor = Colors.white;
+List<Books> booksFavorites = [];
 
-String userName = loginAuthText.text;
-List<String> picsList = [
-        booksList[ind1].image, booksList[ind1].image2,
-      ];
 
-class ShopPage extends StatefulWidget {
-  const ShopPage({super.key});
+class FavPage extends StatefulWidget {
+  const FavPage({super.key});
 
   @override
-  State<ShopPage> createState() => _ShopPageState();
+  State<FavPage> createState() => _FavPageState();
 }
 
-class _ShopPageState extends State<ShopPage> {
+class _FavPageState extends State<FavPage> {
 
   @override
   Widget build(BuildContext context) {
     
+    booksFavorites.clear();
+
+    for (var count = 0; count < booksList.length; count++)
+      {
+        if (booksList[count].heart == true) 
+        {
+          
+          booksFavorites.add(
+            Books(
+              booksList[count].id, 
+              booksList[count].title, 
+              booksList[count].author, 
+              booksList[count].image, 
+              booksList[count].image2,
+              booksList[count].desc, 
+              booksList[count].heart, 
+              booksList[count].cart));
+      }
+      }
+
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Book Shop.\nAccount: $userName' ,
@@ -44,12 +58,7 @@ class _ShopPageState extends State<ShopPage> {
           IconButton(
             icon: const Icon(color: Colors.red, Icons.favorite),
             tooltip: 'Favorites',
-            onPressed: () {
-              Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const FavPage()),
-              );
-            },
+            onPressed: () {},
     ),
           IconButton(
             icon: const Icon(Icons.settings),
@@ -59,15 +68,16 @@ class _ShopPageState extends State<ShopPage> {
         ],
         ),
       body: GridView.builder(gridDelegate: 
-      const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,),
-      itemCount: booksList.length,
+      const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,),
+      itemCount: booksFavorites.length,
       itemBuilder: (BuildContext context, int index) {
       
-      if (booksList[index].heart == true) { 
+      if (booksFavorites[index].heart == true) { 
         iconcolor = Colors.red;}
       else {
         iconcolor = Colors.white;
       }
+
         return SizedBox(height: MediaQuery.of(context).size.height / 2, 
             width: MediaQuery.of(context).size.width / 2, 
           child: ElevatedButton(
@@ -75,7 +85,7 @@ class _ShopPageState extends State<ShopPage> {
               setState((){
               ind1 = index;
               picsList = [
-          booksList[ind1].image, booksList[ind1].image2,
+          booksFavorites[ind1].image, booksFavorites[ind1].image2,
                 ];
               });
               Navigator.push(
@@ -106,7 +116,7 @@ class _ShopPageState extends State<ShopPage> {
                 Row(
                   children: [
                     Expanded(flex: 2,
-                      child: Image.asset(booksList[index].image,
+                      child: Image.asset(booksFavorites[index].image,
                       fit: BoxFit.fill), ),
                   ElevatedButton(style: ElevatedButton.styleFrom(
               elevation: 5,
@@ -114,10 +124,10 @@ class _ShopPageState extends State<ShopPage> {
               shadowColor: Colors.transparent.withOpacity(0.1),),
                     onPressed: ()
                     {
-                      if (booksList[index].heart == true) { 
-        iconcolor = Colors.white; booksList[index].heart = false;}
+                      if (booksFavorites[index].heart == true) { 
+        iconcolor = Colors.white; booksFavorites[index].heart = false;}
       else {
-        iconcolor = Colors.red; booksList[index].heart = true;
+        iconcolor = Colors.red; booksFavorites[index].heart = true;
       }
                     setState(() {});
                     },
@@ -126,8 +136,8 @@ class _ShopPageState extends State<ShopPage> {
                   ]
                     ),
                 Expanded(flex: 2,
-                child: Text('Title: ${booksList[index].title}\n' 
-               'Author: ${booksList[index].author}',
+                child: Text('Title: ${booksFavorites[index].title}\n' 
+               'Author: ${booksFavorites[index].author}',
                 style: const TextStyle(color: Colors.white,
                 ),
                 overflow: TextOverflow.fade,

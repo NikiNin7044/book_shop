@@ -20,25 +20,25 @@ Books(2, 'Cat2', 'Author1', 'assets/images/cat2.png', 'assets/images/cat2.png',
 Books(3, 'Cat3', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
 'really a lot of words', false, false),
 
-Books(4, 'Cat3', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
+Books(4, 'Cat4', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
 'many words too', false, false),
 
-Books(5, 'Cat3', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg', 
+Books(5, 'Cat5', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg', 
 'lots of wordas', false, false),
 
-Books(6, 'Cat3', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
+Books(6, 'Cat6', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
 'words', false, false),
 
-Books(7, 'Cat3', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
+Books(7, 'Cat7', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
 'words3', false, false),
 
-Books(8, 'Cat3', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
+Books(8, 'Cat8', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
 'words2', false, false),
 
-Books(9, 'Cat3', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg', 
+Books(9, 'Cat9', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg', 
 'manyy wordss', false, false),
 
-Books(10, 'Cat3', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
+Books(10, 'Cat10', 'Author1', 'assets/images/cat2.png', 'assets/images/cat1.jpeg',
 'words words words words', false, false),
 
 ];
